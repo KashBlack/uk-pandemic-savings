@@ -153,13 +153,13 @@ This is a portfolio project, but suggestions and improvements are welcome! Feel 
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License 
 
 ## 👤 Author
 
 **[Your Name]**
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/YOUR_PROFILE)
+- GitHub: [KahBlack](https://github.com/KashBlack)
+
 
 ## 🙏 Acknowledgments
 
@@ -170,9 +170,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 Questions or interested in discussing this analysis? Reach out via:
-- Email: your.email@example.com
-- LinkedIn: [Your Profile](https://linkedin.com/in/YOUR_PROFILE)
+- Email: sricharan.chandrasekhar@gmail.com
+- LinkedIn: https://www.linkedin.com/in/sricharan-chandrasekhar-41a98534a/
 
 ---
 
-⭐ If you found this project useful, please consider giving it a star!
