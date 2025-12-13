@@ -158,7 +158,7 @@ This project is licensed under the MIT License
 ## 👤 Author
 
 **[Your Name]**
-- GitHub: [KahBlack](https://github.com/KashBlack)
+- GitHub: [KashBlack](https://github.com/KashBlack)
 
 
 ## 🙏 Acknowledgments
