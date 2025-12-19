@@ -19,7 +19,6 @@ import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
-import statsmodels.formula.api as smf
 from pathlib import Path
 
 # Page config
