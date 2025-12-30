@@ -164,7 +164,7 @@ This project is licensed under the MIT License
 
 ## 👤 Author
 
-**[Sricharan Chandrasekhar]**
+Sricharan Chandrasekhar
 - GitHub: [KashBlack](https://github.com/KashBlack)
 
 
