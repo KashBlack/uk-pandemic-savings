@@ -1,12 +1,19 @@
 # UK Pandemic Excess Savings Analysis
 
+## Why I Built This
+I'm an econ undergrad interested in data analytics. I wanted to explore how the COVID-19 pandemic affected household savings behavior in the UK, especially the inequality across income groups. This project helped me practice end-to-end Python data work by cleaning large datasets, building insights, and creating an interactive dashboard.
+
+## Challenges & Learnings
+Polars was new to me, but much faster than Pandas for this dataset!
+Visualizing decile disparities really brought home the "K-shaped recovery" idea.
+
 **Interactive analysis of household savings behavior during and after COVID-19**
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-![Dashboard Preview](screenshots/dashboard_preview.png)
+![Dashboard Preview](dashboard_preview_2.png)
 
 ## 📊 Overview
 
