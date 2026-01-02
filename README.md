@@ -13,7 +13,7 @@ Visualizing decile disparities really brought home the "K-shaped recovery" idea.
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-![Dashboard Preview](screenshots/dashboard_preview_4.png)
+![Dashboard Preview](screenshots/dashboard_preview_2.png)
 
 ## 📊 Overview
 
