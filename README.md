@@ -15,7 +15,7 @@ Visualizing decile disparities really brought home the "K-shaped recovery" idea.
 
 ![Dashboard Preview](screenshots/dashboard_preview_4.png)
 
-![Dashboard Preview](screenshots/dashboard_preview_2.png)
+
 
 
 ## 📊 Overview
