@@ -15,6 +15,9 @@ Visualizing decile disparities really brought home the "K-shaped recovery" idea.
 
 ![Dashboard Preview](screenshots/dashboard_preview_4.png)
 
+![Dashboard Preview](screenshots/dashboard_preview_2.png)
+
+
 ## 📊 Overview
 
 This project analyzes UK household savings behavior during the COVID-19 pandemic using Bank of England NMG Household Survey data (2015-2025). It quantifies the dramatic savings spike during lockdowns, tracks the subsequent normalization, and reveals significant distributional inequality.
@@ -164,7 +167,7 @@ This project is licensed under the MIT License
 
 ## 👤 Author
 
-**[Sricharan Chandrasekhar]**
+Sricharan Chandrasekhar
 - GitHub: [KashBlack](https://github.com/KashBlack)
 
 
