@@ -1,9 +1,9 @@
-"""
+
 UK Pandemic Savings Analysis Dashboard
-=======================================
+
 Analysis of household savings behavior during COVID-19
 Data: Bank of England NMG Survey (2015-2025)
-"""
+
 
 import streamlit as st
 import polars as pl
@@ -18,9 +18,9 @@ st.set_page_config(
     layout="wide"
 )
 
-# =============================================================================
+
 # Load data
-# =============================================================================
+
 
 @st.cache_data
 def load_data():
@@ -99,9 +99,9 @@ def get_decile_data(df_households):
     return by_decile.to_pandas()
 
 
-# =============================================================================
+
 # Charts
-# =============================================================================
+
 
 def plot_savings_over_time(df_yearly, stats):
     """Main time series chart"""
@@ -258,9 +258,8 @@ def plot_cumulative(df_yearly):
     return fig
 
 
-# =============================================================================
 # Main app
-# =============================================================================
+
 
 def main():
     
