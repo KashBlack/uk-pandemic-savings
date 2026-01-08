@@ -1,8 +1,8 @@
 
-UK Pandemic Savings Analysis Dashboard
+"""UK Pandemic Savings Analysis Dashboard
 
 Analysis of household savings behavior during COVID-19
-Data: Bank of England NMG Survey (2015-2025)
+Data: Bank of England NMG Survey (2015-2025)"""
 
 
 import streamlit as st
