@@ -1,187 +1,99 @@
-# UK Pandemic Excess Savings Analysis
+# UK Pandemic Savings Analysis
 
-## Why I Built This
-I'm an econ undergrad interested in data analytics. I wanted to explore how the COVID-19 pandemic affected household savings behavior in the UK, especially the inequality across income groups. This project helped me practice end-to-end Python data work by cleaning large datasets, building insights, and creating an interactive dashboard.
+## What This Is
 
-## Challenges & Learnings
-Polars was new to me, but much faster than Pandas for this dataset!
-Visualizing decile disparities really brought home the "K-shaped recovery" idea.
+I'm studying economics and wanted to dig into how COVID lockdowns affected household savings in the UK. The Bank of England said people saved around £200bn during the pandemic, but I wanted to see if I could measure this myself and especially look at how it broke down by income level.
 
-**Interactive analysis of household savings behavior during and after COVID-19**
+Ended up being a good excuse to learn Polars (way faster than Pandas) and build my first proper Streamlit dashboard.
 
-[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+## What I Found
+
+Using the Bank of England's household survey data from 2015-2025:
+- Average household savings more than doubled during lockdowns (£3,442 → £7,777/year)
+- Rich households saved 3-5x more than poor households in absolute terms
+- As of 2025, savings are still about 33% higher than pre-pandemic
+- Working with 89k household observations, though only 58.5% had complete income data
 
 ![Dashboard Preview](screenshots/dashboard_preview_4.png)
 
+## Running This Yourself
 
+You'll need Python 3.9+ and pip.
 
-
-## 📊 Overview
-
-This project analyzes UK household savings behavior during the COVID-19 pandemic using Bank of England NMG Household Survey data (2015-2025). It quantifies the dramatic savings spike during lockdowns, tracks the subsequent normalization, and reveals significant distributional inequality.
-
-**Key Findings:**
-- 📈 Savings increased 126% during pandemic (£3,442 → £7,777 per household/year)
-- 💰 Top income deciles accumulated 3-5x more excess savings than bottom deciles  
-- 📉 Savings remain elevated 33% above pre-pandemic baseline as of 2025
-- 🔍 Analysis based on 89,198 household observations with 58.5% income coverage
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-```bash
-Python 3.9+
-pip
-```
-
-### Installation
-
-1. Clone the repository:
+**Setup:**
 ```bash
 git clone https://github.com/YOUR_USERNAME/uk-pandemic-savings.git
 cd uk-pandemic-savings
-```
-
-2. Install dependencies:
-```bash
 pip install -r requirements.txt
-```
-
-3. **Data Setup:**
-
-The processed data files (`nmg_yearly.parquet`, `nmg_real_cleaned.parquet`) are included in the `data/` folder.
-
-⚠️ **Note**: The raw Bank of England survey Excel file is not included due to size constraints. If you need to reprocess from raw data:
-- Download from: [Bank of England NMG Survey](https://www.bankofengland.co.uk/)
-- Place in project root as `boe-nmg-household-survey-data.xlsx`
-- Run: `python load_nmg_smart.py`
-
-4. Launch the dashboard:
-```bash
 streamlit run app.py
 ```
 
-The dashboard will open in your browser at `http://localhost:8501`
+The processed data is in the `data/` folder so it should just work. If you want to reprocess from scratch, download the raw Excel file from the [Bank of England NMG Survey](https://www.bankofengland.co.uk/), save it as `boe-nmg-household-survey-data.xlsx` in the project root, and run `python load_nmg_smart.py`.
 
-## 📁 Project Structure
+## How It Works
+
+The BoE survey doesn't actually track savings directly, so I had to estimate it. Based on what I could find in academic papers, I used these rough savings rates:
+- Pre-pandemic (2016-2019): 8% of income
+- Pandemic (2020-2021): 18% of income 
+- Post-pandemic (2022+): 10% of income
+
+Then I calculated "excess savings" as anything above the 2016-2019 baseline.
+
+**Big caveats:**
+- These savings rates are borrowed from papers, not derived from the data itself
+- Survey coverage means my £77bn estimate is way lower than the BoE's £200bn
+- I had to drop 41.5% of households that didn't report income
+- Early years (2011-2014) have really limited data
+
+## Project Structure
 
 ```
 uk-pandemic-savings/
-├── app.py                      # Main Streamlit dashboard
-├── load_nmg_smart.py           # Data processing pipeline
-├── requirements.txt            # Python dependencies
-├── README.md                   # This file
-├── data/                       # Processed data files
-│   ├── nmg_yearly.parquet     # Yearly aggregates
-│   └── nmg_real_cleaned.parquet  # Household-level data
-└── screenshots/                # Dashboard images
+├── app.py                      # Streamlit dashboard
+├── load_nmg_smart.py           # Data processing script
+├── requirements.txt            
+├── data/                       
+│   ├── nmg_yearly.parquet     # Aggregated by year
+│   └── nmg_real_cleaned.parquet  # Household-level
+└── screenshots/                
 ```
 
-## 🔬 Methodology
+## Dashboard Features
 
-### Data Source
-**Bank of England NMG Household Survey**
-- Biannual survey of UK household finances
-- 89,198 household observations (2015-2025)
-- 58.5% coverage with complete income data
+The Streamlit app has four tabs:
+1. Time series showing the savings spike and recovery
+2. Breakdown by income decile (really shows the inequality)
+3. Data explorer where you can poke around the raw numbers
+4. Export options and summary stats
 
-### Savings Estimation
-The NMG survey does not directly measure savings flows. We apply a **savings rate proxy** based on academic literature:
+## Tech Stack
 
-- **Pre-pandemic (2016-2019)**: 8% of income
-- **Pandemic (2020-2021)**: 18% of income (lockdown constraints)
-- **Post-pandemic (2022+)**: 10% of income (gradual normalization)
+Python, Polars (for data processing), Plotly (charts), Streamlit (dashboard), Parquet files (for storage)
 
-**Excess savings** = Actual savings - Pre-pandemic baseline (2016-2019 average)
+## Issues & Future Work
 
-### Limitations
-- ⚠️ Proxy methodology simplifies complex household behavior
-- ⚠️ Survey sample limitations vs. full UK population
-- ⚠️ Our estimate (£77bn) is lower than BoE official estimate (£200bn) due to survey coverage
-- ⚠️ Early years (2011-2014) have limited income data
+- The savings rate proxy is pretty crude - would be better to derive these from actual spending data
+- Dashboard layout could be cleaner
+- Mobile view is a bit wonky
+- Would love to add regional breakdowns if that data exists
 
-See dashboard "Methodology & Data Sources" section for full details.
+## Context
 
-## 📈 Key Features
+During COVID lockdowns, people couldn't spend money on normal stuff (restaurants, holidays, etc.) so household savings shot up. The question is: where did all that money go, and who has it? This matters for understanding inflation risk (if people start spending it), financial resilience, and inequality.
 
-### Dashboard Tabs
+## License
 
-1. **Time Series Analysis**
-   - Savings trends over 10 years
-   - Pandemic spike visualization
-   - Cumulative excess savings tracking
+MIT - do whatever you want with this
 
-2. **Income Distribution**
-   - Savings patterns by income decile
-   - Inequality analysis
-   - Distributional breakdowns
-
-3. **Data Explorer**
-   - Raw data tables
-   - Yearly aggregates
-   - Household-level samples
-
-4. **Export & Summary**
-   - CSV downloads
-   - Executive summary
-   - Reproducible results
-
-## 📊 Technologies Used
-
-- **Data Processing**: Python, Polars, Pandas, NumPy
-- **Visualization**: Plotly
-- **Dashboard**: Streamlit
-- **Data Storage**: Parquet (efficient columnar format)
-
-## 🎯 Use Cases
-
-This analysis is relevant for:
-
-- **Economic Research**: Understanding pandemic-era household behavior
-- **Policy Analysis**: Assessing financial resilience and inequality
-- **Data Portfolio**: Demonstrating real-world data wrangling and visualization skills
-- **Educational**: Teaching economic data analysis techniques
-
-## 📚 Context
-
-The Bank of England estimated UK households accumulated ~£200bn in "excess savings" during COVID-19 lockdowns (savings that would normally have been spent on restaurants, travel, entertainment, etc.). Understanding the allocation and distribution of these savings has important implications for:
-
-- Monetary policy (inflationary pressure from potential dissaving)
-- Fiscal policy (household resilience to economic shocks)
-- Inequality (differential financial buffers across income groups)
-
-## 🤝 Contributing
-
-This is a portfolio project, but suggestions and improvements are welcome! Feel free to:
-
-- Open an issue for bugs or feature requests
-- Submit a pull request with improvements
-- Share feedback on methodology
-
-## 📄 License
-
-This project is licensed under the MIT License 
-
-## 👤 Author
+## Contact
 
 Sricharan Chandrasekhar
-- GitHub: [KashBlack](https://github.com/KashBlack)
-
-
-## 🙏 Acknowledgments
-
-- Bank of England for making NMG survey data publicly available
-- Academic literature on pandemic savings behavior
-- Streamlit community for excellent documentation
-
-## 📞 Contact
-
-Questions or interested in discussing this analysis? Reach out via:
+- GitHub: [@KashBlack](https://github.com/KashBlack)
 - Email: sricharan.chandrasekhar@gmail.com
-- LinkedIn: https://www.linkedin.com/in/sricharan-chandrasekhar-41a98534a/
+- LinkedIn: [sricharan-chandrasekhar](https://www.linkedin.com/in/sricharan-chandrasekhar-41a98534a/)
+
+Feel free to open issues or PRs if you spot bugs or have ideas!
 
 ---
 
+Data source: Bank of England NMG Household Survey
