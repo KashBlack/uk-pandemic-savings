@@ -83,7 +83,7 @@ During COVID lockdowns, people couldn't spend money on normal stuff (restaurants
 
 ## License
 
-MIT - do whatever you want with this
+MIT - use this as required
 
 ## Contact
 
